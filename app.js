@@ -5,7 +5,6 @@ const{body, validationResult} =  require('express-validator');
 const path = require('node:path');
 //routing
 const indexRouter = require ('./routes/indexRouter.js')
-const {main} = require('./db/populatedb.js')
 
 
 //server setup
@@ -13,7 +12,7 @@ const app = express(()=>{
     console.log('booting server')
 });
 //seed base db
-main();
+
 //ejs setup 
 
 app.set('views', path.join(__dirname, 'views'));

@@ -1,10 +1,11 @@
-# Inventory App (3D Makers Shop)
+# Inventory App (home fridge content inintory tracker)!
 
 Project instruction page:  
 https://www.theodinproject.com/lessons/node-path-nodejs-inventory-application
 
 ## Overview
-This project is an inventory management application for a fictional 3D makers shop.  
+This project is an inventory management application for people who want to manage thier food inventory better to save up on
+food waste costs!.  
 It is intended to practice the skills and tools covered in the **PostgreSQL** section of The Odin Project’s Node.js curriculum.
 
 ## Learning Objectives
@@ -20,7 +21,7 @@ This project focuses on practicing the following concepts and tools:
 
 ## Database Diagram
 Tool used: https://dbdiagram.io
-<img width="822" height="467" alt="3d print shop db struct" src="https://github.com/user-attachments/assets/a2197e93-0f55-49f6-93d8-bc372351696a" />
+{database structure currently unavailable}
 
 ## Base Repository
 Node.js / Express application using an MVC architecture.
