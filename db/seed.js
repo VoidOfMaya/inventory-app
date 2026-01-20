@@ -3,42 +3,28 @@ require('dotenv').config();
 const { Client } = require("pg");
 
 const SQL = `
-CREATE TABLE IF NOT EXISTS company (
+CREATE TABLE IF NOT EXISTS category (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  company_name varchar (25)
+  name varchar (25)
 );
-CREATE TABLE IF NOT EXISTS printer_type(
+CREATE TABLE IF NOT EXISTS item(
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  type VARCHAR(25)
-);
-
-CREATE TABLE IF NOT EXISTS printers (
-  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  printer_name VARCHAR(255),
-  resulotion_mm FLOAT,
-  quantity INTEGER,
-  created_by INTEGER REFERENCES company(id),
-  type INTEGER REFERENCES company(id)
-
+  name VARCHAR(25),
+  category INTEGER REFERENCES category(id),
+  quantity INTEGER
 );
 
-INSERT INTO company (company_name)
+INSERT INTO category (name)
 VALUES
-  ('Creality'),
-  ('Elegoo'),
-  ('Formlabs');
+  ('dairy'),
+  ('meat'),
+  ('fruite');
 
-INSERT INTO printer_type (type)
+INSERT INTO item (name, category, quantity)
 VALUES
-  ('FDM'),
-  ('resin'),
-  ('SLA');
-
-  INSERT INTO printers (printer_name,quantity, resulotion_mm, type, created_by)
-  VALUES
-    ('Ender 3', 120, 0.4, 1 , 1),
-    ('Marse 3', 100, 0.034, 2 , 2),
-    ('Form 4', 35, 0.025, 3 , 3);
+  ('milk', 1, 2),
+  ('chicken breast', 2, 6),
+  ('strawbery', 3, 24);
 `;
 
 async function main() {
