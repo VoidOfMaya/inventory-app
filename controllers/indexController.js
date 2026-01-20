@@ -1,14 +1,16 @@
 //import data
-
+const postgres = require('../db/queries.js')
 //code:
 async function getHome(req, res){
     res.render('index');
 }
 async function getCategories(req, res){
-    res.render('categories');
+    const category = await postgres.getAllCategories();
+    res.render('categories',{category: category});
 }
 async function getItems(req, res){
-    res.render('items');
+    const items = await postgres.getAllItems();
+    res.render('items',{items : items});
 }
 
 module.exports = {

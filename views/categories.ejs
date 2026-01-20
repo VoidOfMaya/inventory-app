@@ -6,12 +6,11 @@
 </head>
 <body>
     <%- include("partials/top-nav.ejs") %>
-    <section class="main-container">
+    <section class="category-container">
         <h1 class="title">category page</h1>
-        <div class="link-container">
-            <a href="/Items" class="link-Btn">Items</a>
-            <a href="/" class="link-Btn">Home</a>
-        </div>
+        <% category.forEach(card => { %>
+            <div class="ctgry-card"> <%= card.name %> </div>
+        <% }) %>
     </section>
 </body>
 </html>

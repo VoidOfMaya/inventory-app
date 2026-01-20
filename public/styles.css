@@ -59,3 +59,23 @@ a{
 .link-Btn:hover{
     background-color: rgb(204, 206, 207);
 }
+/* category page*/
+.category-container{
+    justify-self: center;
+
+}
+.ctgry-card{
+    padding: 20px;
+    outline: 1px solid rgb(148, 152, 155);
+    border-radius: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    transform: scale(1);
+    transition: transform .1s ease;
+}
+.ctgry-card:hover{
+    outline: 1px solid rgb(255, 255, 255);
+    transform: scale(1.1);
+
+    
+}

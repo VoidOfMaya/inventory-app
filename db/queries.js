@@ -11,8 +11,12 @@ username_seq_id | username
  2              | alphanzo
  3              | keren
 */
-async function getAllUsernames() {
-  const { rows } = await pool.query("SELECT * FROM usernames");
+async function getAllCategories() {
+  const { rows } = await pool.query("SELECT name FROM category");
+  return rows;
+}
+async function getAllItems() {
+  const { rows } = await pool.query("SELECT * FROM name");
   return rows;
 }
 
@@ -25,6 +29,6 @@ async function insertUsername(username) {
 }
 
 module.exports = {
-  getAllUsernames,
-  insertUsername
+  getAllCategories,
+  getAllItems
 };
