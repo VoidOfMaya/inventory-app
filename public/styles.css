@@ -79,3 +79,21 @@ a{
 
     
 }
+/*items page*/
+.itms-container{
+    justify-self: center;
+
+}
+.itm-card{
+    padding: 20px;
+    outline: 1px solid rgb(148, 152, 155);
+    border-radius: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    transform: scale(1);
+    transition: transform .1s ease; 
+}
+.itm-card:hover{
+    outline: 1px solid rgb(255, 255, 255);
+    transform: scale(1.1);   
+}

@@ -6,12 +6,17 @@
 </head>
 <body>
     <%- include("partials/top-nav.ejs") %>
-    <section class="main-container">
+    <!--db shape: { category_name: 'dairy', item_name: 'milk', quantity: 2 },-->
+    <section class="itms-container">
         <h1 class="title">Items page</h1>
-        <div class="link-container">
-            <a href="/Category" class="link-Btn">Categories</a>
-            <a href="/" class="link-Btn">Home</a>
+        <% items.forEach(item =>{%>
+        <div class="itm-card">
+            <h4><%= item.item_name %></h4>
+            <div><%= item.quantity %></div>
+            <div><%= item.category_name %></div>
         </div>
+        <% }) %>
+
     </section>
 </body>
 </html>

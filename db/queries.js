@@ -16,7 +16,7 @@ async function getAllCategories() {
   return rows;
 }
 async function getAllItems() {
-  const { rows } = await pool.query("SELECT * FROM name");
+  const { rows } = await pool.query("SELECT  c.name AS category_name, i.name AS item_name, i.quantity  FROM item AS i INNER JOIN category AS c ON i.category = c.id");
   return rows;
 }
 

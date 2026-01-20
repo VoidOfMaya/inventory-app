@@ -10,6 +10,7 @@ async function getCategories(req, res){
 }
 async function getItems(req, res){
     const items = await postgres.getAllItems();
+    console.log(items)
     res.render('items',{items : items});
 }
 
