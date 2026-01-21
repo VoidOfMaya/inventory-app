@@ -28,9 +28,13 @@ async function getAllCategories() {
   return rows;
 };
 async function getAllItems() {
-  const { rows } = await pool.query("SELECT  c.name AS category_name, i.name AS item_name, i.quantity  FROM item AS i INNER JOIN category AS c ON i.category = c.id");
+  const { rows } = await pool.query("SELECT  i.id, c.name AS category_name, i.name AS item_name, i.quantity  FROM item AS i INNER JOIN category AS c ON i.category = c.id");
   return rows;
 };
+async function getItem(id) {
+  const {row } = await pool.query(`SELECT * FROM item WHERE item.id = $1`,[id]);
+  return row;
+}
 //update : 
 //result ={id , name, quantity, category}
 async function updateItem(result) {
@@ -78,6 +82,7 @@ module.exports = {
   //r
   getAllCategories,
   getAllItems,
+  getItem,
   //u
   updateCategory,
   updateItem,

@@ -13,6 +13,10 @@ async function getItems(req, res){
     const categories = await postgres.getAllCategories();
     res.render('items',{items : items, ctgries: categories});
 }
+async function updateItemPage(req, res) {
+    item = await postgres.getItem(req.params.id);
+    res.render('editPage', {item: item})
+}
 
 //post
 async function addItem(req, res){
@@ -39,4 +43,5 @@ module.exports = {
     addItem,
     addCategory,
     updateItem,
+    updateItemPage,
 }
