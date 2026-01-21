@@ -11,28 +11,58 @@ username_seq_id | username
  2              | alphanzo
  3              | keren
 */
-async function getAllCategories() {
-  const { rows } = await pool.query("SELECT * FROM category");
-  return rows;
-}
-async function getAllItems() {
-  const { rows } = await pool.query("SELECT  c.name AS category_name, i.name AS item_name, i.quantity  FROM item AS i INNER JOIN category AS c ON i.category = c.id");
-  return rows;
-}
-//  'itm-name': {'chocolate','itm-quantity': '2','itm-category': 'dairy'}
-
-//add item
+//create
 async function createItem(result){
   await pool.query(`
     INSERT INTO item (name, quantity, category)
     VALUES ($1, $2, $3)`,[result.itmName,result.itmQuantity,result.itmCategory]);
-}
+};
 async function createCategory(result){
   await pool.query(`
     INSERT INTO category (name)
     VALUES ($1)`,[result.ctgyName]);
+};
+//Read
+async function getAllCategories() {
+  const { rows } = await pool.query("SELECT * FROM category");
+  return rows;
+};
+async function getAllItems() {
+  const { rows } = await pool.query("SELECT  c.name AS category_name, i.name AS item_name, i.quantity  FROM item AS i INNER JOIN category AS c ON i.category = c.id");
+  return rows;
+};
+//update : 
+//result ={id , name, quantity, category}
+async function updateItem(result) {
+  await pool.query(
+    `
+    UPDATE item
+    SET name = $1,
+        quantity = $2,
+        category = $3
+    WHERE id= $4  
+
+    `,[result.name,result.quantity,result.category,result.id]);
 }
-//[result.itmName],[result.itmQuantity],[result.itmCategory]
+//result = {id, name}
+async function updateCategory(result) {
+  await pool.query(`
+    UPDATE category
+    SET name = $1
+    WHERE id = $2
+    `,[result.name, result.id]);
+}
+
+
+//delete
+async function deleteItem(){};
+async function deleteCategory(){};
+
+
+
+
+
+
 async function insertUsername(username) {
   await pool.query("INSERT INTO usernames (username) VALUES ($1)", [username]);
   //note the $1 in the query is a parameter else the query would lookl ike this:
@@ -42,8 +72,15 @@ async function insertUsername(username) {
 }
 
 module.exports = {
+  //c
+  createCategory,
+  createItem,
+  //r
   getAllCategories,
   getAllItems,
-  createItem,
-  createCategory
+  //u
+  updateCategory,
+  updateItem,
+  //d
+
 };

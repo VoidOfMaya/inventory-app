@@ -11,7 +11,15 @@
         <h1 class="title">category page</h1>
         <div class="add-btn" id="ctgry-btn" aria-label="create new category button"> Create new category!</div>
         <% category.forEach(card => { %>
-            <div class="ctgry-card"> <%= card.name %> </div>
+            <div class="ctgry-card">
+                <%= card.name %>          
+                <div id="card-options">
+                    <a style="margin-right: 20px; color: orange;">edit</a>
+                    <a style="color: red;">delete</a>        
+                </div>  
+                
+            </div>
+
         <% }) %>
     </section>
     <dialog id="ctgry-dlg">

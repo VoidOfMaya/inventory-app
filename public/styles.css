@@ -86,6 +86,19 @@ button{
 .link-Btn:hover{
     background-color: rgb(204, 206, 207);
 }
+#card-options{
+    grid-area: options;
+    background-color:rgb(148, 152, 155) ;
+    padding: 20px;
+    align-self: center;
+    border-radius: 20px;
+}
+#card-options:hover{
+    background-color: rgb(221, 221, 221);
+    cursor: pointer;
+
+
+}
 /* category page*/
 .category-container{
     justify-self: center;
@@ -114,10 +127,11 @@ button{
 }
 .itm-card{
     display: grid;
-    grid-template: 1fr/ 1fr 1fr 1fr;
+    grid-template: 1fr/ auto auto auto;
     align-items: center;
     justify-items: center;
     gap: 20px;
+    grid-template-areas: 'item-name item-quantity item-category options';
 
     padding: 20px;
     outline: 1px solid rgb(148, 152, 155);
