@@ -12,14 +12,22 @@ username_seq_id | username
  3              | keren
 */
 async function getAllCategories() {
-  const { rows } = await pool.query("SELECT name FROM category");
+  const { rows } = await pool.query("SELECT * FROM category");
   return rows;
 }
 async function getAllItems() {
   const { rows } = await pool.query("SELECT  c.name AS category_name, i.name AS item_name, i.quantity  FROM item AS i INNER JOIN category AS c ON i.category = c.id");
   return rows;
 }
+//  'itm-name': {'chocolate','itm-quantity': '2','itm-category': 'dairy'}
 
+//add item
+async function createItem(result){
+  await pool.query(`
+    INSERT INTO item (name, quantity, category)
+    VALUES ($1, $2, $3)`,[result.itmName,result.itmQuantity,result.itmCategory]);
+}
+//[result.itmName],[result.itmQuantity],[result.itmCategory]
 async function insertUsername(username) {
   await pool.query("INSERT INTO usernames (username) VALUES ($1)", [username]);
   //note the $1 in the query is a parameter else the query would lookl ike this:
@@ -30,5 +38,6 @@ async function insertUsername(username) {
 
 module.exports = {
   getAllCategories,
-  getAllItems
+  getAllItems,
+  createItem
 };

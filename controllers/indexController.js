@@ -10,12 +10,21 @@ async function getCategories(req, res){
 }
 async function getItems(req, res){
     const items = await postgres.getAllItems();
-    console.log(items)
-    res.render('items',{items : items});
+    const categories = await postgres.getAllCategories();
+    res.render('items',{items : items, ctgries: categories});
+}
+
+//post
+async function addItem(req, res){
+    const item = req.body
+    console.log(item);
+    await postgres.createItem(item);
+    res.redirect('/Items');
 }
 
 module.exports = {
     getHome,
     getCategories,
-    getItems
+    getItems,
+    addItem
 }

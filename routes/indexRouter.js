@@ -1,7 +1,7 @@
 //tools
 const {Router}= require('express');
 //controllers
-const {getHome, getCategories, getItems} = require('../controllers/indexController.js')
+const {getHome, getCategories, getItems, addItem} = require('../controllers/indexController.js')
 
 const indexRouter =Router();
 //get
@@ -11,7 +11,7 @@ indexRouter.get('/Items',getItems);
 
 //post
 //indexRouter.post('/Category');
-//indexRouter.post('/Items');
+indexRouter.post('/Items', addItem);
 
 
 module.exports = indexRouter

@@ -3,13 +3,15 @@
     <meta charset="UTF-8">
     <title>home</title>
     <link rel="stylesheet" href="/styles.css">
+    <script src="/items-index.js" defer></script>
 </head>
 <body>
     <%- include("partials/top-nav.ejs") %>
     <!--db shape: { category_name: 'dairy', item_name: 'milk', quantity: 2 },-->
     <section class="itms-container">
         <h1 class="title">Items page</h1>
-        <% items.forEach(item =>{%>
+        <div class="add-btn" id="itms-btn" aria-label="create new item button"> Create new item!</div>
+        <% items.forEach(item =>{ %>
         <div class="itm-card">
             <h4><%= item.item_name %></h4>
             <div><%= item.quantity %></div>
@@ -18,5 +20,25 @@
         <% }) %>
 
     </section>
+    <dialog id="itms-dlg">
+        <form method="post" action="/Items">
+            <h2>Create new item</h2>
+            <label for="itmName">Name: </label>
+            <input id="itmName" name="itmName" type="text" placeholder="category name!" required>
+
+            <label for="itmQuantity">Quantity: </label>
+            <input id="itmQuantity" name="itmQuantity" type="number" required>
+
+            <label for="itmCategory">Category:</label>
+            <select id="itmCategory" name="itmCategory" required>
+                <option value="" disabled selected> --choose category--</option>
+                <% ctgries.forEach(ctgry =>{ %>
+                    <option value="<%= ctgry.id%>"><%= ctgry.name %></option>
+                <% }) %>
+            </select>
+            <button> + add item</button>
+            <button type="button" id="dlg-exit">close</button>
+        </form>
+    </dialog>
 </body>
 </html>

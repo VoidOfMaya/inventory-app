@@ -30,6 +30,17 @@ a{
     color: white;
     align-self: center;
 }
+dialog{
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+}
+button{
+    padding: 10px;
+    margin: 10px;
+    
+}
 .main-container{
     display:grid;
     grid-template: 1fr 1fr 1fr /1fr 1fr 1fr;
@@ -47,6 +58,22 @@ a{
 }
 .title{
     grid-area: title;
+}
+.add-btn{
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    outline: 1px solid rgb(148, 152, 155);
+    margin: 20px;
+}
+.add-btn:hover{
+    color: rgb(75, 199, 75);
+    background-color: rgb(235, 235, 235);
+    padding: 20px;
+    border-radius: 20px;
+    outline-color: rgb(70, 236, 70);
+    margin: 20px;
+    cursor: pointer;
 }
 .link-container{
     grid-area: links;
@@ -79,12 +106,19 @@ a{
 
     
 }
+
 /*items page*/
 .itms-container{
     justify-self: center;
 
 }
 .itm-card{
+    display: grid;
+    grid-template: 1fr/ 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 20px;
+
     padding: 20px;
     outline: 1px solid rgb(148, 152, 155);
     border-radius: 20px;
