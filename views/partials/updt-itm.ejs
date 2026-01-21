@@ -1,0 +1,23 @@
+   <!-- takes item-->
+   <dialog id="itm-update-<%= item.id %>">
+        <form method="post" action="/update-itm">
+            <!-- hidden input carries the id -->
+            <input type="hidden" name="id" value="<%= item.id %>">
+
+            <label for="name">name: </label>
+            <input id="name" name="name" type="text" value="<%= item.name %>">
+
+            <label for="quantity">quantity: </label>
+            <input id="name" id="quantity" name="quantity" type="number" value="<%= item.quantity %>"></inputid>>
+
+            <label>category: </label>
+            <select id="itmCategory" name="itmCategory" >
+                <option value="<%= item.category%>" disabled selected> --choose category--</option>
+                <% ctgries.forEach(ctgry =>{ %>
+                    <option value="<%= ctgry.id%>"><%= ctgry.name %></option>
+                <% }) %>
+            </select>
+            <button> update item</button>
+            <button type="button" class="updt-dlg-exit">close</button>
+        </form>
+    </dialog>

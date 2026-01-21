@@ -26,11 +26,17 @@ async function addCategory(req, res) {
     await postgres.createCategory(ctgry);
     res.redirect('/Category')
 }
+//update
+async function updateItem(req, res) {
+    console.log(req.body);
+    res.redirect('/Items')
+}
 
 module.exports = {
     getHome,
     getCategories,
     getItems,
     addItem,
-    addCategory
+    addCategory,
+    updateItem,
 }

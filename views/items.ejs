@@ -17,9 +17,10 @@
             <div style="grid-area: item-quantity;"><%= item.quantity %></div>
             <div style="grid-area: item-category;"><%= item.category_name %></div>
             <div id="card-options">
-                <a style="margin-right: 20px; color: orange;">edit</a>
+                <a  class="dialod-open" data-id="<%= item.id %>" style="margin-right: 20px; color: orange;">edit</a>
                 <a style="color: red;">delete</a>                
             </div>
+            <%- include('partials/updt-itm.ejs', {item: item, ctgries: ctgries}) %>
 
         </div>
         <% }) %>
