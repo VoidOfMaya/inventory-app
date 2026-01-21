@@ -15,9 +15,10 @@
         <% }) %>
     </section>
     <dialog id="ctgry-dlg">
-        <form method="post" action="/items">
+        <form method="post" action="/Category">
             <h2>Create new category</h2>
-            <label>Name:</label><input>
+            <label for="ctgyName">Name: </label>
+            <input id="ctgyName" name="ctgyName" type="text" placeholder="canned food" required>
             <button> + add item</button>
             <button type="button" id="dlg-exit">close</button>
         </form>

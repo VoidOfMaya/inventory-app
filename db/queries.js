@@ -27,6 +27,11 @@ async function createItem(result){
     INSERT INTO item (name, quantity, category)
     VALUES ($1, $2, $3)`,[result.itmName,result.itmQuantity,result.itmCategory]);
 }
+async function createCategory(result){
+  await pool.query(`
+    INSERT INTO category (name)
+    VALUES ($1)`,[result.ctgyName]);
+}
 //[result.itmName],[result.itmQuantity],[result.itmCategory]
 async function insertUsername(username) {
   await pool.query("INSERT INTO usernames (username) VALUES ($1)", [username]);
@@ -39,5 +44,6 @@ async function insertUsername(username) {
 module.exports = {
   getAllCategories,
   getAllItems,
-  createItem
+  createItem,
+  createCategory
 };

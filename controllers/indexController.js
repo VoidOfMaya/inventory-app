@@ -21,10 +21,16 @@ async function addItem(req, res){
     await postgres.createItem(item);
     res.redirect('/Items');
 }
+async function addCategory(req, res) {
+    const ctgry = req.body;
+    await postgres.createCategory(ctgry);
+    res.redirect('/Category')
+}
 
 module.exports = {
     getHome,
     getCategories,
     getItems,
-    addItem
+    addItem,
+    addCategory
 }
