@@ -14,8 +14,10 @@ async function getItems(req, res){
     res.render('items',{items : items, ctgries: categories});
 }
 async function updateItemPage(req, res) {
-    item = await postgres.getItem(req.params.id);
-    res.render('editPage', {item: item})
+    const id = Number(req.params.id);
+    const item = await postgres.getItem(id);
+    console.log(item)
+    res.render('editPage', {item});
 }
 
 //post

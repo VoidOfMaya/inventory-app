@@ -32,9 +32,12 @@ async function getAllItems() {
   return rows;
 };
 async function getItem(id) {
-  const {row } = await pool.query(`SELECT * FROM item WHERE item.id = $1`,[id]);
-  return row;
-}
+  const {rows } = await pool.query(
+    `SELECT * FROM item WHERE item.id = $1`,
+    [id]
+  );
+  return rows[0];
+};
 //update : 
 //result ={id , name, quantity, category}
 async function updateItem(result) {
