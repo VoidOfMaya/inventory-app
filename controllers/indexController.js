@@ -28,7 +28,6 @@ async function updateCategoryPage(req, res) {
 }
 async function deleteCategoryPage(req, res) {
     const category = await postgres.getCategory(req.params.id);
-    console.log(category)
     res.render('deleteCategory',{category});
 }
 
