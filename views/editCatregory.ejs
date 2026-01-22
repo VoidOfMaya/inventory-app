@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edit category</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/index.js" defer></script>
+</head>
+<body>
+    <%- include("partials/top-nav.ejs") %>
+    <section class="edit-container">
+        <h1 class="title">edit category</h1>
+        <h2><%= category.name %></h2>
+        <form method="post" action="/update-ctgry">
+
+            <input type="hidden" name="id" value="<%= category.id %>">
+
+            <label for="name">Name: </label>
+            <input id="name" name="name" type="text" value="<%= category.name %>">
+
+            <button>Commit change!</button>
+            <button formaction="/Category">cancel</button>
+        </form>
+    </section>
+</body>
+</html>

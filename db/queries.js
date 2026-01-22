@@ -38,6 +38,13 @@ async function getItem(id) {
   );
   return rows[0];
 };
+async function getCategory(id) {
+  const {rows } = await pool.query(
+    `SELECT * FROM category WHERE category.id = $1`,
+    [id]
+  );
+  return rows[0];
+};
 //update : 
 //result ={id , name, quantity, category}
 async function updateItem(result) {
@@ -86,6 +93,7 @@ module.exports = {
   getAllCategories,
   getAllItems,
   getItem,
+  getCategory,
   //u
   updateCategory,
   updateItem,

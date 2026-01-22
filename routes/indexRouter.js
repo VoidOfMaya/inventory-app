@@ -1,19 +1,21 @@
 //tools
 const {Router}= require('express');
 //controllers
-const {getHome, getCategories, getItems, addItem, addCategory, updateItem, updateItemPage} = require('../controllers/indexController.js')
+const control = require('../controllers/indexController.js')
 
 const indexRouter =Router();
 //get
-indexRouter.get('/',getHome);
-indexRouter.get('/Category',getCategories);
-indexRouter.get('/Items',getItems);
-indexRouter.get('/Item/:id', updateItemPage)
+indexRouter.get('/',control.getHome);
+indexRouter.get('/Category',control.getCategories);
+indexRouter.get('/Items',control.getItems);
+indexRouter.get('/Item/:id', control.updateItemPage);
+indexRouter.get('/Category/:id', control.updateCategoryPage);
 
 //post
-indexRouter.post('/Category',addCategory);
-indexRouter.post('/Items', addItem);
-indexRouter.post('/update-itm',updateItem)
+indexRouter.post('/Category',control.addCategory);
+indexRouter.post('/Items', control.addItem);
+indexRouter.post('/update-itm',control.updateItem);
+indexRouter.post('/update-ctgry',control.updateCategory);
 
 
 module.exports = indexRouter

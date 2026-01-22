@@ -1,5 +1,6 @@
 //import data
-const postgres = require('../db/queries.js')
+const postgres = require('../db/queries.js');
+const { post } = require('../routes/indexRouter.js');
 //code:
 async function getHome(req, res){
     res.render('index');
@@ -21,6 +22,11 @@ async function updateItemPage(req, res) {
     console.log(categories)
     res.render('editPage', {item, categories});
 }
+async function updateCategoryPage(req, res) {
+    const id = Number(req.params.id);
+    const category = await postgres.getCategory(id);
+    res.render('editCatregory',{category});
+}
 
 //post
 async function addItem(req, res){
@@ -36,10 +42,15 @@ async function addCategory(req, res) {
 }
 //update
 async function updateItem(req, res) {
-    //takes{id , name, quantity, category}
+    //expects {id , name, quantity, category}
     await postgres.updateItem(req.body)
-    console.log(req.body);
+
     res.redirect('/Items')
+}
+async function updateCategory(req, res) {
+    //expects {id, name}
+    await postgres.updateCategory(req.body);
+    res.redirect('/Category');
 }
 
 module.exports = {
@@ -50,4 +61,6 @@ module.exports = {
     addCategory,
     updateItem,
     updateItemPage,
+    updateCategoryPage,
+    updateCategory
 }
