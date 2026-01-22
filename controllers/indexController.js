@@ -58,19 +58,17 @@ async function updateCategory(req, res) {
 }
 //delet
 async function deleteCategory(req, res) {
-    let msg;
     try{
-        await postgres.deleteCategory(Number(req.params.id))     
+        await postgres.deleteCategory(Number(req.params.id));
+        res.redirect('/Category') ;   
     }catch(error){
         if (error.code === '23503'){
-            msg = 'can not delete category: category in use'
         }else{
-            console.log(error);
 
+            console.log(`controller side: ${error}`);
         }
-        
     }
-    res.render(`/Category/${Number(req.params.id)}/Delete`,{msg})
+   
 }
 
 module.exports = {

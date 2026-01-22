@@ -24,7 +24,24 @@
 
     </section>
     <script>
+        const deleteCategory = (id) =>{
+            const confirmed = confirm('are you sure you want to proceed with deleting this category?');
 
+            if(!confirmed) return;
+
+            fetch(`/Category/${id}/Delete/`, {method: 'DELETE'})
+            .then(async res =>{
+             if(res.ok){
+                alert('delete was successfull');
+                window.location.href='/Category';
+             }
+             console.log(`result: ${res}`)
+            })
+            .catch(err =>{
+
+                console.log(err)
+            });
+        }
     </script>
 </body>
 </html>
