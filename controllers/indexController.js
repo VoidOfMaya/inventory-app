@@ -16,7 +16,7 @@ async function getItems(req, res){
 async function updateItemPage(req, res) {
     const id = Number(req.params.id);
     const item = await postgres.getItem(id);
-    const categories = await postgres.getAllCategories();
+    const categories = await postgres.getAllCategories();        
     console.log(item)
     console.log(categories)
     res.render('editPage', {item, categories});
@@ -36,6 +36,8 @@ async function addCategory(req, res) {
 }
 //update
 async function updateItem(req, res) {
+    //takes{id , name, quantity, category}
+    await postgres.updateItem(req.body)
     console.log(req.body);
     res.redirect('/Items')
 }
