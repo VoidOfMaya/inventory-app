@@ -18,8 +18,7 @@ async function updateItemPage(req, res) {
     const id = Number(req.params.id);
     const item = await postgres.getItem(id);
     const categories = await postgres.getAllCategories();        
-    console.log(item)
-    console.log(categories)
+
     res.render('editPage', {item, categories});
 }
 async function updateCategoryPage(req, res) {
@@ -27,11 +26,16 @@ async function updateCategoryPage(req, res) {
     const category = await postgres.getCategory(id);
     res.render('editCatregory',{category});
 }
+async function deleteCategoryPage(req, res) {
+    const category = await postgres.getCategory(req.params.id);
+    console.log(category)
+    res.render('deleteCategory',{category});
+}
 
 //post
 async function addItem(req, res){
     const item = req.body
-    console.log(item);
+   
     await postgres.createItem(item);
     res.redirect('/Items');
 }
@@ -43,7 +47,7 @@ async function addCategory(req, res) {
 //update
 async function updateItem(req, res) {
     //expects {id , name, quantity, category}
-    await postgres.updateItem(req.body)
+    await postgres.updateItem(req.query)
 
     res.redirect('/Items')
 }
@@ -52,15 +56,37 @@ async function updateCategory(req, res) {
     await postgres.updateCategory(req.body);
     res.redirect('/Category');
 }
+//delet
+async function deleteCategory(req, res) {
+    let msg;
+    try{
+        await postgres.deleteCategory(Number(req.params.id))     
+    }catch(error){
+        if (error.code === '23503'){
+            msg = 'can not delete category: category in use'
+        }else{
+            console.log(error);
+
+        }
+        
+    }
+    res.render(`/Category/${Number(req.params.id)}/Delete`,{msg})
+}
 
 module.exports = {
+    //create
+    addItem,
+    addCategory,
+    //read
     getHome,
     getCategories,
     getItems,
-    addItem,
-    addCategory,
+    //update
     updateItem,
     updateItemPage,
     updateCategoryPage,
-    updateCategory
+    updateCategory,
+    //delete
+    deleteCategoryPage,
+    deleteCategory,
 }

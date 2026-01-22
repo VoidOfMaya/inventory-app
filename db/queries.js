@@ -70,7 +70,10 @@ async function updateCategory(result) {
 
 //delete
 async function deleteItem(){};
-async function deleteCategory(){};
+async function deleteCategory(id){
+    await pool.query(`
+    DELETE FROM category WHERE category.id = $1`,[id]);
+};
 
 
 
@@ -88,15 +91,21 @@ async function insertUsername(username) {
 module.exports = {
   //c
   createCategory,
+
   createItem,
   //r
   getAllCategories,
+  getCategory,
+
   getAllItems,
   getItem,
-  getCategory,
+  
   //u
   updateCategory,
+
   updateItem,
   //d
+  deleteCategory,
 
+  deleteItem,
 };

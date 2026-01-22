@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delete category</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/index.js" defer></script>
+</head>
+<body>
+    <%- include("partials/top-nav.ejs") %>
+    <section class="edit-container">
+        <h1 class="title">delete category <%= category.name %></h1>
+        <h2></h2> 
+            <button onclick="deleteCategory( <%= category.id %> )"> Delete!</button>          
+            <button onclick="window.location.href= '/Category';">cancel</button>
+         <!--<form method="post" action="/Category/<%= category.id %>/Delete/success">
+           
+            <input type="hidden" name="id" value="<%= category.id %>">
+             for later  delete validation
+            <label for="password">Password: </label>
+            <input id="password" name="password" type="password" required>
+            -->
+
+        <!--</form>-->
+
+    </section>
+    <script>
+
+    </script>
+</body>
+</html>

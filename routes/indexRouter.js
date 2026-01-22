@@ -10,12 +10,17 @@ indexRouter.get('/Category',control.getCategories);
 indexRouter.get('/Items',control.getItems);
 indexRouter.get('/Item/:id', control.updateItemPage);
 indexRouter.get('/Category/:id', control.updateCategoryPage);
+indexRouter.get('/Category/:id/Delete', control.deleteCategoryPage);
 
 //post
 indexRouter.post('/Category',control.addCategory);
 indexRouter.post('/Items', control.addItem);
+
 indexRouter.post('/update-itm',control.updateItem);
 indexRouter.post('/update-ctgry',control.updateCategory);
+
+//delete
+indexRouter.delete('/Category/:id/Delete/',control.deleteCategory);
 
 
 module.exports = indexRouter
