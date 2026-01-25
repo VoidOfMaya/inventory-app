@@ -1,7 +1,7 @@
 //import data
 const postgres = require('../db/queries.js');
 const { post } = require('../routes/indexRouter.js');
-const {param, body, matchedData, validationResult} = require('express-validator')
+const {query,param, body, matchedData, validationResult} = require('express-validator')
 
 // category validation:
 
@@ -26,18 +26,23 @@ const createItemValidaiton =
 //editing array
 const editItemValidation =
 [
-    param('name')
+    body('id')
+    .exists().withMessage(`id is required`)
+    .isInt()
+    .toInt(),
+    body('name')
     .trim().notEmpty()
     .matches(/^[A-Za-z ]+$/)
     .isLength({max: 8, min: 3})
     .withMessage('name invalid, please enter a valid name'),
-    param('quantity')
+    body('quantity')
     .notEmpty()
     .isNumeric()
     .isLength({max:50, min: 1})
     .withMessage('number invalid, pelase enter a valid number between 1 sand 50'),
-    param('category')
-    .notEmpty()
+    body('category')
+    .isInt()
+    .toInt()
     .withMessage('pleas select an apropriate category'),
 ]
 //code:
@@ -94,10 +99,17 @@ async function addCategory(req, res) {
 };
 //update
 async function updateItem(req, res) {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        console.log(errors);
+        res.redirect(`/Items`);
+    }
+    const item = matchedData(req);
+    console.log(item)
     //expects {id , name, quantity, category}
-    await postgres.updateItem(req.query)
+    await postgres.updateItem(item)
 
-    res.redirect('/Items')
+    res.redirect(`/Items`)
 };
 async function updateCategory(req, res) {
     //expects {id, name}

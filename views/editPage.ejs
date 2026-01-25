@@ -17,10 +17,11 @@
 
             <label for="quantity">Quantity </label>
             <input id="quantity" name="quantity" type="number" min="0" step="1" value="<%= item.quantity %>" required>
-            <select name="category" >Category
-                <option value="<%= item.category %>">--choose category--</option>
+            <label for="category">Category:</label>
+            <select name="category" id="category">
+                <option value="<%= item.category %>" selected>--choose category--</option>
                 <% categories.forEach(ctgry =>{ %>
-                    <option value="<%= ctgry.id %>" ><%= ctgry.name %></option>
+                    <option value="<%= ctgry.id %>" <%= ctgry.id === item.category? 'selected' : '' %> ><%= ctgry.name %></option>
                 <% }) %>
             </select>
             <button>Commit change!</button>
