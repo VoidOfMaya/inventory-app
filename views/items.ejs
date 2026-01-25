@@ -19,7 +19,7 @@
             <div style="grid-area: item-category;"><%= item.category_name %></div>
             <div id="card-options">
                 <a  class="dialod-open" href="/Item/<%= item.id %>" style="margin-right: 20px; color: orange;">edit</a>
-                <a style="color: red;">delete</a>                
+                <a style="color: red;" href="/Item/<%= item.id %>/Delete/">delete</a>                
             </div>
             <%- include('partials/updt-itm.ejs', {item: item, ctgries: ctgries}) %>
 

@@ -11,6 +11,7 @@ indexRouter.get('/Items',control.getItems);
 indexRouter.get('/Item/:id', control.updateItemPage);
 indexRouter.get('/Category/:id', control.updateCategoryPage);
 indexRouter.get('/Category/:id/Delete', control.deleteCategoryPage);
+indexRouter.get('/Item/:id/Delete', control.deleteItemPage);
 
 //post
 indexRouter.post('/Category',control.addCategory);
@@ -21,6 +22,7 @@ indexRouter.post('/update-ctgry',control.updateCategory);
 
 //delete
 indexRouter.delete('/Category/:id/Delete/',control.deleteCategory);
+indexRouter.delete('/Item/:id/Delete/',control.deleteItem);
 
 
 module.exports = indexRouter

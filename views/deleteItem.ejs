@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delete item</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/index.js" defer></script>
+</head>
+<body>
+    <%- include("partials/top-nav.ejs") %>
+    <section class="edit-container">
+        <h1 class="title">delete item <%= item.name %></h1>
+        <h2></h2> 
+            <button onclick="deleteItem( <%= item.id %> )"> Delete!</button>          
+            <button onclick="window.location.href= '/Items';">cancel</button>
+
+    </section>
+    <script>
+        const deleteItem = (id) =>{
+            const confirmed = confirm('are you sure you want to proceed with deleting this category?');
+
+            if(!confirmed) return;
+
+            fetch(`/Item/${id}/Delete/`, {method: 'DELETE'})
+            .then(async res =>{
+             if(res.ok){
+                alert('delete was successfull');
+                window.location.href='/Items';
+             }
+             console.log(`result: ${res}`)
+            })
+            .catch(err =>{
+                
+                console.log(err);
+            });
+        }
+    </script>
+</body>
+</html>

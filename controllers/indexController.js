@@ -30,6 +30,10 @@ async function deleteCategoryPage(req, res) {
     const category = await postgres.getCategory(req.params.id);
     res.render('deleteCategory',{category});
 }
+async function deleteItemPage(req, res) {
+    const item = await postgres.getItem(req.params.id);
+    res.render('deleteItem',{item});
+}
 
 //post
 async function addItem(req, res){
@@ -37,24 +41,24 @@ async function addItem(req, res){
    
     await postgres.createItem(item);
     res.redirect('/Items');
-}
+};
 async function addCategory(req, res) {
     const ctgry = req.body;
     await postgres.createCategory(ctgry);
     res.redirect('/Category')
-}
+};
 //update
 async function updateItem(req, res) {
     //expects {id , name, quantity, category}
     await postgres.updateItem(req.query)
 
     res.redirect('/Items')
-}
+};
 async function updateCategory(req, res) {
     //expects {id, name}
     await postgres.updateCategory(req.body);
     res.redirect('/Category');
-}
+};
 //delet
 async function deleteCategory(req, res) {
     try{
@@ -68,7 +72,20 @@ async function deleteCategory(req, res) {
         }
     }
    
-}
+};
+async function deleteItem(req, res) {
+    try{
+        await postgres.deleteItem(Number(req.params.id));
+        res.redirect('/Items') ;   
+    }catch(error){
+        if (error.code === '23503'){
+        }else{
+
+            console.log(`controller side: ${error}`);
+        }
+    }
+   
+};
 
 module.exports = {
     //create
@@ -86,4 +103,7 @@ module.exports = {
     //delete
     deleteCategoryPage,
     deleteCategory,
+    
+    deleteItemPage,
+    deleteItem,
 }
