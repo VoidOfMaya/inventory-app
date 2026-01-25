@@ -12,10 +12,13 @@
         <div class="add-btn" id="ctgry-btn" aria-label="create new category button"> Create new category!</div>
         <% category.forEach(card => { %>
             <div class="ctgry-card">
-                <%= card.name %>          
+                <div style="padding: 20px;">
+                    <%= card.name %>     
+                </div>
+                        
                 <div id="card-options">
-                    <a href="/Category/<%= card.id %>" style="margin-right: 20px; color: orange;">edit</a>
-                    <a href="/Category/<%= card.id %>/Delete" style="color: red;">delete</a>        
+                    <a href="/Category/<%= card.id %>" style="margin-right: 20px; color: white;">edit</a>
+                    <a href="/Category/<%= card.id %>/Delete" style="color: white;">delete</a>        
                 </div>  
                 
             </div>
@@ -23,10 +26,12 @@
         <% }) %>
     </section>
     <dialog id="ctgry-dlg">
-        <form method="post" action="/Category">
-            <h2>Create new category</h2>
+        <h2>Create new category</h2>
+        <form method="post" action="/Category" class="ctgry-create-container">
+            
             <label for="ctgyName">Name: </label>
             <input id="ctgyName" name="ctgyName" type="text" placeholder="canned food" required>
+            
             <button> + add item</button>
             <button type="button" id="dlg-exit">close</button>
         </form>

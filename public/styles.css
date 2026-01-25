@@ -2,7 +2,7 @@ html{
     height: 100%;    
 }
 body{   
-    background-color: rgb(241, 237, 237);
+    background-color: rgb(235, 235, 235);
     margin: 0px;
   
 
@@ -13,7 +13,7 @@ header{
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-areas: ' title nav';
-    background-color: rgb(148, 152, 155);
+    background-color: rgb(57, 63, 68);
     padding: 10px;
 
 }
@@ -37,9 +37,23 @@ dialog{
     text-align: center;
 }
 button{
-    padding: 10px;
+    padding: 20px;
     margin: 10px;
-    
+    border-radius: 20px;
+    border: none;  
+    background-color: rgb(57, 63, 68); 
+    font-size: 24px;
+    color: white;
+    transform: scale(1);
+    transition: transform .1s ease;
+}
+button:hover{
+    transform: scale(1.1);
+    background-color: rgb(50, 166, 255);
+}
+input{
+    padding: 20px;
+    border-radius: 10px;
 }
 .main-container{
     display:grid;
@@ -64,7 +78,7 @@ button{
     text-align: center;
     padding: 20px;
     border-radius: 20px;
-    outline: 1px solid rgb(148, 152, 155);
+    outline: 1px solid rgb(50, 166, 255);
     margin: 20px;
 }
 .add-btn:hover{
@@ -80,34 +94,43 @@ button{
     grid-area: links;
 }
 .link-Btn{
-    background-color: rgb(148, 152, 155);
+    z-index: 0;
+    background-color:rgb(57, 63, 68) ;
     padding: 20px;
+    align-self: center;
+    border-radius: 20px;
     font-size: 24px;
 }
 .link-Btn:hover{
-    background-color: rgb(204, 206, 207);
+    background-color: rgb(50, 166, 255);
+    cursor: pointer;
 }
-#card-options{
+#card-options a{
     grid-area: options;
-    background-color:rgb(148, 152, 155) ;
+    background-color:rgb(57, 63, 68) ;
     padding: 20px;
     align-self: center;
     border-radius: 20px;
 }
-#card-options:hover{
-    background-color: rgb(221, 221, 221);
+#card-options a:hover{
+    background-color: rgb(50, 166, 255);
     cursor: pointer;
-
-
 }
 /* category page*/
 .category-container{
     justify-self: center;
+    
 
 }
 .ctgry-card{
-    padding: 20px;
-    outline: 1px solid rgb(148, 152, 155);
+    display: grid;
+    grid-template: 1fr/ 1fr 2fr;
+    align-items: center;
+    justify-items: end;
+    gap: 20px;
+
+    
+    outline: 1px solid rgb(57, 63, 68);
     border-radius: 20px;
     margin-bottom: 10px;
     text-align: center;
@@ -115,7 +138,7 @@ button{
     transition: transform .1s ease;
 }
 .ctgry-card:hover{
-    outline: 1px solid rgb(255, 255, 255);
+    outline: 1px solid rgb(50, 166, 255);
     transform: scale(1.1);
 
     
@@ -146,6 +169,11 @@ button{
 .ctgry-delete-buttons-container{
     justify-self: center;  
 }
+.ctgry-create-container{
+    display: grid;
+    grid-template: repeat(2 , 1fr)/ repeat(2 , 1fr);
+    align-items: center;
+}
 /*items page*/
 .itms-container{
     justify-self: center;
@@ -170,6 +198,11 @@ button{
 .itm-card:hover{
     outline: 1px solid rgb(255, 255, 255);
     transform: scale(1.1);   
+}
+.itm-create-container{
+    display: grid;
+    grid-template: repeat(4 , 1fr)/ 1fr 1fr;
+    align-items: center;
 }
 /*edit item page*/
 .itm-edit-container{

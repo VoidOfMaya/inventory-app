@@ -18,8 +18,8 @@
             <div style="grid-area: item-quantity;"><%= item.quantity %></div>
             <div style="grid-area: item-category;"><%= item.category_name %></div>
             <div id="card-options">
-                <a  class="dialod-open" href="/Item/<%= item.id %>" style="margin-right: 20px; color: orange;">edit</a>
-                <a style="color: red;" href="/Item/<%= item.id %>/Delete/">delete</a>                
+                <a  class="dialod-open" href="/Item/<%= item.id %>" style="margin-right: 20px; color: white;">edit</a>
+                <a style="color: white;" href="/Item/<%= item.id %>/Delete/">delete</a>                
             </div>
             <%- include('partials/updt-itm.ejs', {item: item, ctgries: ctgries}) %>
 
@@ -28,8 +28,9 @@
 
     </section>
     <dialog id="itms-dlg">
-        <form method="post" action="/Items">
-            <h2>Create new item</h2>
+        <h2>Create new item</h2>
+        <form method="post" action="/Items" class="itm-create-container">
+            
             <label for="itmName">Name: </label>
             <input id="itmName" name="itmName" type="text" placeholder="example: chocolate bar!" required>
 
