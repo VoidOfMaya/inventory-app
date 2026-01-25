@@ -32,10 +32,10 @@
         <form method="post" action="/Items" class="itm-create-container">
             
             <label for="itmName">Name: </label>
-            <input id="itmName" name="itmName" type="text" placeholder="example: chocolate bar!" required>
+            <input id="itmName" name="itmName" type="text" placeholder="example: chocolate bar!"  min="3" max="24" required>
 
             <label for="itmQuantity">Quantity: </label>
-            <input id="itmQuantity" name="itmQuantity" type="number" min="0" step="1" required>
+            <input id="itmQuantity" name="itmQuantity" type="number" min="0" max="50" step="1" required>
 
             <label for="itmCategory">Category:</label>
             <select id="itmCategory" name="itmCategory" required>

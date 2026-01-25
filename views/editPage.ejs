@@ -13,10 +13,10 @@
         <form method="post" action="/update-itm" class="itm-edit-form">
             <input type="hidden" name="id" value="<%= item.id %>">
             <label for="name">Name: </label>
-            <input id="name" name="name" type="text" value="<%= item.name %>">
+            <input id="name" name="name" type="text" value="<%= item.name %>"  min="3" max="24" required>
 
             <label for="quantity">Quantity </label>
-            <input id="quantity" name="quantity" type="number" min="0" step="1" value="<%= item.quantity %>" required>
+            <input id="quantity" name="quantity" type="number" min="0" max="50" step="1" value="<%= item.quantity %>" required>
             <label for="category">Category:</label>
             <select name="category" id="category">
                 <option value="<%= item.category %>" selected>--choose category--</option>

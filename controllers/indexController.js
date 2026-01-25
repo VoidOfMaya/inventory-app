@@ -12,7 +12,7 @@ const createItemValidaiton =
     .trim()
     .notEmpty()
     .matches(/^[A-Za-z ]+$/)
-    .isLength({max: 8, min: 3})
+    .isLength({max: 24, min: 3})
     .withMessage('name invalid, please enter a valid name'),
     body('itmQuantity')
     .notEmpty()
@@ -33,7 +33,7 @@ const editItemValidation =
     body('name')
     .trim().notEmpty()
     .matches(/^[A-Za-z ]+$/)
-    .isLength({max: 8, min: 3})
+    .isLength({max: 24, min: 3})
     .withMessage('name invalid, please enter a valid name'),
     body('quantity')
     .notEmpty()
