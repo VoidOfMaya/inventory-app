@@ -7,10 +7,10 @@
 </head>
 <body>
     <%- include("partials/top-nav.ejs") %>
-    <section class="edit-container">
+    <section class="itm-edit-container">
         <h1 class="title">edit item</h1>
         <h2><%= item.name %></h2>
-        <form method="post" action="/update-itm">
+        <form method="post" action="/update-itm" class="itm-edit-form">
             <input type="hidden" name="id" value="<%= item.id %>">
             <label for="name">Name: </label>
             <input id="name" name="name" type="text" value="<%= item.name %>">

@@ -145,3 +145,30 @@ button{
     outline: 1px solid rgb(255, 255, 255);
     transform: scale(1.1);   
 }
+/*edit item page*/
+.itm-edit-container{
+    margin-top: 25%;
+    justify-self:center ;
+    align-self: center;
+    outline: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+
+}
+.itm-edit-form{
+    align-items: center;
+    display: grid;
+    grid-template: repeat( 4, 1fr) / 1fr 1fr;
+}
+/* delete item page*/
+.itm-delet-container{
+    margin-top: 25%;
+    justify-self:center ;
+    align-self: center;
+    outline: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+}
+.item-delete-buttons-container{
+    justify-self: center;
+}

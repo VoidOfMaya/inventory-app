@@ -7,11 +7,13 @@
 </head>
 <body>
     <%- include("partials/top-nav.ejs") %>
-    <section class="edit-container">
+    <section class="itm-delet-container">
         <h1 class="title">delete item <%= item.name %></h1>
-        <h2></h2> 
+        <div class="item-delete-buttons-container">
             <button onclick="deleteItem( <%= item.id %> )"> Delete!</button>          
-            <button onclick="window.location.href= '/Items';">cancel</button>
+            <button onclick="window.location.href= '/Items';">cancel</button>            
+        </div> 
+
 
     </section>
     <script>
