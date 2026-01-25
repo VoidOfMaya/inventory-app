@@ -7,10 +7,10 @@
 </head>
 <body>
     <%- include("partials/top-nav.ejs") %>
-    <section class="edit-container">
+    <section class="ctgry-edit-container">
         <h1 class="title">edit category</h1>
-        <h2><%= category.name %></h2>
-        <form method="post" action="/update-ctgry">
+        <h2 style="justify-self: center;"><%= category.name %></h2>
+        <form method="post" action="/update-ctgry" class="ctgry-edit-form">
 
             <input type="hidden" name="id" value="<%= category.id %>">
 
