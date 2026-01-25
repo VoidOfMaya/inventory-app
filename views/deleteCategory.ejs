@@ -7,20 +7,12 @@
 </head>
 <body>
     <%- include("partials/top-nav.ejs") %>
-    <section class="edit-container">
+    <section class="ctgry-delete-container">
         <h1 class="title">delete category <%= category.name %></h1>
-        <h2></h2> 
+        <div class="ctgry-delete-buttons-container">
             <button onclick="deleteCategory( <%= category.id %> )"> Delete!</button>          
-            <button onclick="window.location.href= '/Category';">cancel</button>
-         <!--<form method="post" action="/Category/<%= category.id %>/Delete/success">
-           
-            <input type="hidden" name="id" value="<%= category.id %>">
-             for later  delete validation
-            <label for="password">Password: </label>
-            <input id="password" name="password" type="password" required>
-            -->
-
-        <!--</form>-->
+            <button onclick="window.location.href= '/Category';">cancel</button>            
+        </div>
 
     </section>
     <script>

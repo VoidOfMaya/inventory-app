@@ -134,6 +134,18 @@ button{
     display: grid;
     grid-template: repeat( 2, 1fr) / repeat( 2, 1fr);    
 }
+/* delete category page*/
+.ctgry-delete-container{
+    margin-top: 25%;
+    justify-self:center ;
+    align-self: center;
+    outline: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;    
+}
+.ctgry-delete-buttons-container{
+    justify-self: center;  
+}
 /*items page*/
 .itms-container{
     justify-self: center;
