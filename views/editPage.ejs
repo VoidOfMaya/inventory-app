@@ -16,7 +16,7 @@
             <input id="name" name="name" type="text" value="<%= item.name %>">
 
             <label for="quantity">Quantity </label>
-            <input id="quantity" name="quantity" type="number" value="<%= item.quantity %>">
+            <input id="quantity" name="quantity" type="number" min="0" step="1" value="<%= item.quantity %>" required>
             <select name="category" >Category
                 <option value="<%= item.category %>">--choose category--</option>
                 <% categories.forEach(ctgry =>{ %>
@@ -24,7 +24,7 @@
                 <% }) %>
             </select>
             <button>Commit change!</button>
-            <button formaction="'/Item">cancel</button>
+            <button formaction="/Items">cancel</button>
         </form>
     </section>
 </body>

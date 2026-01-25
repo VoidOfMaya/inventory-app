@@ -1,6 +1,45 @@
 //import data
 const postgres = require('../db/queries.js');
 const { post } = require('../routes/indexRouter.js');
+const {param, body, matchedData, validationResult} = require('express-validator')
+
+// category validation:
+
+// items validation:
+const createItemValidaiton =
+[ 
+    body('itmName')
+    .trim()
+    .notEmpty()
+    .matches(/^[A-Za-z ]+$/)
+    .isLength({max: 8, min: 3})
+    .withMessage('name invalid, please enter a valid name'),
+    body('itmQuantity')
+    .notEmpty()
+    .isNumeric()
+    .isLength({max:50, min: 1})
+    .withMessage('number invalid, pelase enter a valid number between 1 sand 50'),
+    body('itmCategory')
+    .notEmpty()
+    .withMessage('pleas select an apropriate category'),
+]
+//editing array
+const editItemValidation =
+[
+    param('name')
+    .trim().notEmpty()
+    .matches(/^[A-Za-z ]+$/)
+    .isLength({max: 8, min: 3})
+    .withMessage('name invalid, please enter a valid name'),
+    param('quantity')
+    .notEmpty()
+    .isNumeric()
+    .isLength({max:50, min: 1})
+    .withMessage('number invalid, pelase enter a valid number between 1 sand 50'),
+    param('category')
+    .notEmpty()
+    .withMessage('pleas select an apropriate category'),
+]
 //code:
 async function getHome(req, res){
     res.render('index');
@@ -37,8 +76,14 @@ async function deleteItemPage(req, res) {
 
 //post
 async function addItem(req, res){
-    const item = req.body
-   
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        console.log(`addItemControlERROR: ${errors}`);
+        res.redirect(`/Items`);
+    }
+    const item = matchedData(req)
+
+    console.log(item);
     await postgres.createItem(item);
     res.redirect('/Items');
 };
@@ -88,6 +133,11 @@ async function deleteItem(req, res) {
 };
 
 module.exports = {
+    //VALIDATORS:
+    createItemValidaiton,
+    editItemValidation,
+    //CONTROLLERS:
+
     //create
     addItem,
     addCategory,

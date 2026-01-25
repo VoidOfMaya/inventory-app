@@ -15,9 +15,9 @@ indexRouter.get('/Item/:id/Delete', control.deleteItemPage);
 
 //post
 indexRouter.post('/Category',control.addCategory);
-indexRouter.post('/Items', control.addItem);
+indexRouter.post('/Items',control.createItemValidaiton, control.addItem);
 
-indexRouter.post('/update-itm',control.updateItem);
+indexRouter.post('/update-itm',control.editItemValidation, control.updateItem);
 indexRouter.post('/update-ctgry',control.updateCategory);
 
 //delete
