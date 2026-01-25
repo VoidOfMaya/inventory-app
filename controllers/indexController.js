@@ -45,6 +45,26 @@ const editItemValidation =
     .toInt()
     .withMessage('pleas select an apropriate category'),
 ]
+// Category validation:
+const createCategoryValidation =[
+    body('ctgyName')
+    .trim()
+    .notEmpty().withMessage('category name is required')
+    .matches(/^[A-Za-z ]+$/).withMessage('name must contain only letters: a to z, A - Z')
+    .isLength({max: 12, min: 3}).withMessage('name must be between 12 -3 charecters'),
+]
+//editing array
+const editCategoryValidation = [
+    body('id')
+    .exists().withMessage(`id is required`)
+    .isInt()
+    .toInt(),
+    body('name')
+    .trim()
+    .notEmpty().withMessage('category name is required')
+    .matches(/^[A-Za-z ]+$/).withMessage('name must contain only letters: a to z, A - Z')
+    .isLength({max: 12, min: 3}).withMessage('name must be between 12 -3 charecters'),
+]
 //code:
 async function getHome(req, res){
     res.render('index');
@@ -83,7 +103,7 @@ async function deleteItemPage(req, res) {
 async function addItem(req, res){
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-        console.log(`addItemControlERROR: ${errors}`);
+        console.log(`Controller_ERROR/ create /item: ${errors.array()}`);
         res.redirect(`/Items`);
     }
     const item = matchedData(req)
@@ -93,7 +113,15 @@ async function addItem(req, res){
     res.redirect('/Items');
 };
 async function addCategory(req, res) {
-    const ctgry = req.body;
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        console.log(`Controller_ERROR/ add /category: ${errors.array()}`);
+        res.redirect(`/Category`);
+    }
+    const ctgry = matchedData(req)
+
+    //console.log(ctgry);
+
     await postgres.createCategory(ctgry);
     res.redirect('/Category')
 };
@@ -101,7 +129,7 @@ async function addCategory(req, res) {
 async function updateItem(req, res) {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-        console.log(errors);
+        console.log(`Controller_ERROR/ edit /item: ${errors.array()}`);
         res.redirect(`/Items`);
     }
     const item = matchedData(req);
@@ -112,8 +140,17 @@ async function updateItem(req, res) {
     res.redirect(`/Items`)
 };
 async function updateCategory(req, res) {
+
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        console.log(`Controller_ERROR/ edit /category: ${errors.array()}`);
+        res.redirect(`/Category`);
+    }
+    const ctgry = matchedData(req)
+
+    console.log(ctgry);
     //expects {id, name}
-    await postgres.updateCategory(req.body);
+    await postgres.updateCategory(ctgry);
     res.redirect('/Category');
 };
 //delet
@@ -148,6 +185,10 @@ module.exports = {
     //VALIDATORS:
     createItemValidaiton,
     editItemValidation,
+
+    createCategoryValidation,
+    editCategoryValidation,
+
     //CONTROLLERS:
 
     //create
